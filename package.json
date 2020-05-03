@@ -1,0 +1,14 @@
+{
+  "name": "the-hanger",
+  "version": "1.0.0",
+  "description": "clothing based e-commerce website using Node.js",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
