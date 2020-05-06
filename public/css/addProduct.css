@@ -1,0 +1,43 @@
+.m-d-login{
+    background: rgba(265,265,265,0.6) ;
+    border-radius: 4px ;
+    height: 80vh ;
+}
+.m-m-login{
+    background:linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.5)), url("../images/logo-back1.jpeg") no-repeat center center /cover;
+    margin-top: 60px;
+    height: 88vh;
+}
+.m-inp{
+    background: none; 
+    border: none;
+    width: 60%;
+    border-bottom:1px solid black ;
+}
+.m-inp::placeholder{
+    color: rgba(0,0,0,0.7);
+}
+.m-inp:focus{
+    outline:none; 
+    border-bottom: 1.5px solid rgb(252, 92, 0);
+    transition: all 0.1s;
+}
+.m-size{
+    margin: 5px;
+}
+.m-inp-ch{
+    background: none; 
+    border: none;
+    width: 6%;
+    margin-left: 2px ;
+    margin-right: 8px;
+    border-bottom:1px solid black ;
+}
+.m-inp-ch::placeholder{
+    color: rgba(0,0,0,0.7);
+}
+.m-inp-ch:focus{
+    outline:none; 
+    border-bottom: 1.5px solid rgb(252, 92, 0);
+    transition: all 0.1s;
+}

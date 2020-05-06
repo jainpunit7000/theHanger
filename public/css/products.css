@@ -1,0 +1,35 @@
+.m-pdd .col-3{
+    padding-top: 5px;
+}
+
+.m-col{
+    color: black;
+}
+.m-col:hover{
+    transform: translateX(-2px);
+    transform: translateY(-2px);
+    color: black;
+    box-shadow: 1px 2px 15px rgb(182, 182, 182);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+.m-card{
+    padding: 0px;
+    /* box-shadow: 1px 2px 15px rgb(226, 226, 226); */
+    border: none ;
+}
+.m-dell{
+    color: rgb(128, 128, 128);
+    font-size: 15px;
+}
+.m-dis{
+    color: orange;
+    font-weight: 500;
+}
+.m-pri{
+    font-weight: 700;
+}
+.m-dess{
+    color: black;
+    margin: 0px;
+}

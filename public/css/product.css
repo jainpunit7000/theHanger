@@ -1,0 +1,74 @@
+.m-brand{
+    font-size : 22px ;
+    font-weight: 700 ;
+    margin : 0px ;
+}
+.m-desc{
+    font-size : 20px; 
+    text-decoration: st;
+}
+.m-price{
+    font-size : 22px ;
+    font-weight: 600 ;
+}
+.m-del{
+    font-size: 20px ;
+}
+.m-disc{
+    font-size: 20px ;
+    color: rgb(245, 150, 72);
+    font-weight: 500 ;
+}
+.m-tax{
+    font-size: 14px;
+    color: green;
+    font-weight: 600;
+}
+.m-radio-btn{
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    margin-right:  15px ;
+    background-color: inherit;
+    border: 1px solid gray;
+}
+.m-radio-btn:hover{
+    font-weight: 600 ;
+    border: 1px solid black;
+}
+/* .m-radio-btn:active{
+    outline: 0;
+    box-shadow: none ;
+} */
+ .m-radio-btn:active:focus, .m-radio-btn:focus {
+    outline: 0;
+}
+.Highlight{
+    background-color: gray ;
+    color: white;
+}
+.Highlight:hover{
+    border: 1px solid gray;
+}
+.m-fnl-btn {
+    margin: 20px auto;
+    margin-right: 8px;
+    background-color: rgb(255, 24, 74);
+    color: white;
+    width: 250px;
+}
+.m-fnl-btn:hover{
+    transform: translateY(-2px);
+    transition: all 0.1s;
+    color: white;
+    border :none ;
+}
+.m-detail p{
+    padding: 0  ;
+    margin: 4px;
+}
+/* .m-specs{
+    border:1px solid rgb(219, 219, 219) ;
+    border-radius: 6px;
+    box-shadow: 2px 2px 2px 2px gray;
+} */

@@ -1,0 +1,30 @@
+.m-ftr{
+    margin-top: 20px;
+    padding-top: 75px;
+    padding-bottom: 75px;
+    height: 80vh;
+    width: 100;
+    background-color: rgb(226, 226, 226);
+}
+.m-head{
+    margin-bottom: 24px ;
+}
+.m-link{
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    display: block;
+    font-size: 14px;
+    padding-top: 20px;
+    font-weight: 400;
+}
+.m-link:hover{
+    color: black;
+}
+.m-icon{
+    padding: 8px;
+    margin: auto 10px;
+    color: black;
+}
+.m-icon:hover{
+    color: rgb(80, 80, 80);
+}

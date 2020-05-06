@@ -1,0 +1,37 @@
+<%- include("../includes/head.ejs") %>
+<link rel="stylesheet" href="./css/login.css">
+
+<%- include("../includes/nav.ejs") %>
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-between m-m-login">
+        <div class="col-4">
+            
+        </div>
+        <div class="col-3 m-d-login mt-4" style="padding:0px">
+            <div>
+                <img src="./images/free.png" width="100%" alt="" style="border-radius: 4px;">
+            </div>
+            <form class="my-4 p-2 text-center">
+                <div class="form-group">
+                  <label for="email">Email address</label> <br>
+                  <input type="email" class="m-inp">
+                  <small id="emailHelp" class="form-text">We'll never share your email with anyone else.</small>
+                </div>
+                <div class="form-group">
+                  <label>Password</label> <br>
+                  <input type="password" class="m-inp">
+                </div>
+                <div class="form-group">
+                  <label>Confirm Password</label> <br>
+                  <input type="password" class="m-inp">
+                </div>
+                <button type="submit" class="btn btn-outline-light">Sign Up</button>
+              </form>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+</div>
+<%- include("../includes/end.ejs") %>

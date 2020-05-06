@@ -1,0 +1,57 @@
+<%- include("../includes/head.ejs") %>
+<link rel="stylesheet" href="./css/addProduct.css">
+<link rel="stylesheet" href="./css/footer.css">
+
+<%- include("../includes/nav.ejs") %>
+
+<div class="container-fluid pt-4">
+    <div class="row justify-content-between m-m-login">
+        <div class="col-4">
+            
+        </div>
+        <div class="col-4 m-d-login mt-4" style="padding:0px">
+            <div class="text-center p-4">
+                <h1 style="color: rgb(65, 66, 66);">ADD PRODUCT </h1>
+            </div>
+            <form class="mt-4 px-2 text-center">
+                <div class="form-group">
+                    <span>Title : </span>
+                    <input type="text" class="m-inp">
+                </div>
+                <div class="form-group">
+                    <span>Brand : </span>
+                    <input type="text" class="m-inp">
+                </div>
+                <div class="form-group">
+                    <span style="margin-right: 12px;">sizes : </span>
+                    <span class="m-size"><input id="c38" type="checkbox" value="">38</span>
+                    <span class="m-size"><input id="c40" type="checkbox" value="">40</span>
+                    <span class="m-size"><input id="c42" type="checkbox" value="">42</span>
+                    <span class="m-size"><input id="c44" type="checkbox" value="">44</span> <br>
+                    <span>Quantity : </span>
+                    <input type="text" name="" class="m-inp-ch">
+                    <input type="text" name="" class="m-inp-ch">
+                    <input type="text" name="" class="m-inp-ch">
+                    <input type="text" name="" class="m-inp-ch">
+                </div>
+                <div class="form-group">
+                    <span>Description</span>
+                    <input type="text" class="m-inp">
+                </div>
+                <div class="form-group">
+                    <span>Price : </span>
+                    <input type="text" class="m-inp">
+                </div>
+                <div class="form-group">
+                    <span>Category : </span>
+                    <input type="text" class="m-inp">
+                </div>
+                <button type="submit" class="btn btn-outline-light">Add Product</button>
+              </form>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+</div>
+<%- include("../includes/end.ejs") %>
