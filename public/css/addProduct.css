@@ -29,9 +29,15 @@
     background: none; 
     border: none;
     width: 6%;
+    /* text-align: center; */
+    /* display: none; */
     margin-left: 2px ;
     margin-right: 8px;
     border-bottom:1px solid black ;
+}
+label{
+    font-size: 18px;
+    font-weight: 400;
 }
 .m-inp-ch::placeholder{
     color: rgba(0,0,0,0.7);
@@ -40,4 +46,35 @@
     outline:none; 
     border-bottom: 1.5px solid rgb(252, 92, 0);
     transition: all 0.1s;
+}
+.m-men-fade{
+    display: none ;
+}
+.m-women-fade{
+    display: none ;
+}
+.m-kids-fade{
+    display: none ;
+}
+.m-tab{
+    display: none;
+}
+.m-step {
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #424242;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
+}
+.m-step.active {
+    opacity: 1;
+}
+.m-step.finish {
+    background-color: #4CAF50;
+}
+.m-fade{
+    display: none ;
 }

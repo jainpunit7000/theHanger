@@ -11,7 +11,7 @@ router.get('/',shopController.getHome);
 
 
 // //men-section - anurag
-// router.get('/shop/men',shopController.getProductsShopMen);
+// router.get("/m",shopController.getProductsShopMen);
 
 //     //topwear
 //     router.get('/men-topwear',shopController.getProductsMenTopWear);

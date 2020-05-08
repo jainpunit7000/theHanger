@@ -17,7 +17,7 @@ app.set('views','views') ;
 
 //routesRegistered - anurag
 
-// const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 // const authRoutes = require('./routes/auth');
 
@@ -28,14 +28,15 @@ app.use(express.static(path.join(__dirname,"public"))) ;
 // });
 
 //RoutesCalled - anurag
-// app.use(adminRoutes);
-app.use(shopRoutes);
+app.use(adminRoutes);
+app.use("/shop",shopRoutes);
 // app.use(authRoutes);
 
-//mongooseConnection - anurag
+// mongooseConnection - anurag
 // mongoose
 // .connect(MONGODB_URI)
 // .then(result => {
+//     console.log("----> connected") ;
     app.listen(3000);
 // })
 // .catch(err => {
