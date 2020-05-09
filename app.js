@@ -4,7 +4,13 @@ const express = require('express') ;
 
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const MONGODB_URI = 'mongodb+srv://anurag:1ukBCbEqTxMCe2gz@cluster0-p7ghp.mongodb.net/test?retryWrites=true&w=majority';
+
+const errorController = require('./controllers/error');
+const Seller = require('./models/seller');
+const Buyer = require('./models/buyer');
+
+
+const MONGODB_URI = 'mongodb+srv://anurag:1ukBCbEqTxMCe2gz@cluster0-p7ghp.mongodb.net/shop';
 
 const app = express() ;
 
@@ -29,16 +35,33 @@ app.use(express.static(path.join(__dirname,"public"))) ;
 
 //RoutesCalled - anurag
 app.use(adminRoutes);
-app.use("/shop",shopRoutes);
+app.use(shopRoutes);
 // app.use(authRoutes);
 
+app.use(errorController.get404);
+
 // mongooseConnection - anurag
-// mongoose
-// .connect(MONGODB_URI)
-// .then(result => {
-//     console.log("----> connected") ;
+mongoose
+.connect(MONGODB_URI)
+.then(result => {
+    console.log("----> connected") ;
+
+    const buyer = new Buyer ({
+        name : 'Punit',
+        email : 'jainPunit7000@gmail.com',
+        wishlist : [],
+        bag : []
+    });
+    buyer.save();
+    const seller = new Seller ({
+        name : 'Anurag',
+        email : 'davanu100@gmail.com',
+        password : 'theHanger',
+        addedProducts : []
+    });
+    seller.save();
     app.listen(3000);
-// })
-// .catch(err => {
-//     console.log(err);
-// });
+})
+.catch(err => {
+    console.log(err);
+});

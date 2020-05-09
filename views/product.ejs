@@ -39,11 +39,11 @@
                 </div>
             </div>
             <div class="col-5 p-2">
-                <p class="m-brand">Roadster</p>
-                <p class="text-muted  text-lg m-desc">Men Black & Grey Checked Casual Shirt</p>
+                <p class="m-brand"><%= product.brand %></p>
+                <p class="text-muted  text-lg m-desc"><%= product.title %></p>
                 <hr>
                 <div class="ml-2">
-                    <span class="m-price">Rs. 909</span>
+                    <span class="m-price">Rs. <%= product.price %></span>
                     <span class="m-del mx-3 text-muted"><del >Rs. 1299</del></span>
                     <span class="text-warning m-disc">( 30% OFF )</span>
                     <br>
@@ -61,8 +61,7 @@
                     <hr>
                     <div>
                         <h6 class="my-4" >PRODUCT DETAILS <i class="ml-2 fa fa-list-alt"></i> </h6>
-                        <p style="max-width: auto;font-size: 15px;" class="text-muted">Black and grey checked casual shirt, has a spread collar,
-                             a full button placket, long sleeves with roll-up tabs, a patch pocket, a curved hem</p>
+                        <p style="max-width: auto;font-size: 15px;" class="text-muted"><%= product.desc %></p>
                         <h6 class="mt-4">Material & Care</h6>
                         <div style="font-size: 15px;" >
                             <span class="text-muted" >Cotton</span> <br>
@@ -109,7 +108,7 @@
                             </div>
                         </div>
                         <hr>
-                        <p class="mt-4">Product Code : <span style="font-weight: 600;">2124555</span></p>
+                        <p class="mt-4">Product Code : <span style="font-weight: 600;"><%= product._id %></span></p>
                 </div>
             </div>
         </div>

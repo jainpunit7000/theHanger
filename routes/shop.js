@@ -9,9 +9,10 @@ const router = express.Router();
 //index-section - anurag
 router.get('/',shopController.getHome);
 
+// men-section - anurag
+router.get("/shop/men",shopController.getProductsShopMen);
 
-// //men-section - anurag
-// router.get("/m",shopController.getProductsShopMen);
+router.get("/shop/men/:productId",shopController.getProductMen);
 
 //     //topwear
 //     router.get('/men-topwear',shopController.getProductsMenTopWear);
