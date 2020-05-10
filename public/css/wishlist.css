@@ -1,0 +1,66 @@
+.m-highlight{
+    font-size: 28px;
+    font-weight: 500;
+    margin-right : 20px 
+}
+.m-inc{
+    font-size: larger;
+}
+.m-margin{
+    padding: 6px;
+    /* border: 1px solid lavender; */
+}
+.m-margin:hover{
+    box-shadow: 1px 2px 15px lavender;
+}
+.m-margin hr{
+    margin-bottom: 1px;
+}
+.m-margin span{
+    margin-right: 10px;
+}
+.m-margin img{
+    border-radius: 6px;
+}
+.m-t1{
+    font-weight: 500;
+    font-size: 18px;
+}
+.m-t2{
+    font-size: small;
+    text-decoration: line-through;
+    color: rgb(118, 118, 122);
+}
+.m-t3{
+    font-weight: 500;
+    font-size: 16px;
+    color: orange;
+}
+.m-btn{
+    width: 100%;
+    padding: 10px;
+    margin: 0px;
+}
+.m-btn:hover{
+    background-color: lavender;
+}
+
+.m-cross{
+    position: absolute;
+    top: 5%;
+    right: 12%;
+    width: 30px;
+    height: 30px;
+    border:none ;
+    background-color: rgb(65, 67, 68);
+    border-radius: 50%;
+    color: white;
+    border: 1px solid white ;
+}
+.m-cross:hover{
+    color: black;
+    border: 1px solid black ;
+    background-color: white;
+    transform: rotate(180deg);
+    transition: all 0.8s;
+}

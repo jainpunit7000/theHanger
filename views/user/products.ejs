@@ -1,0 +1,129 @@
+<%- include("./includes/head.ejs") %>
+<link rel="stylesheet" href="/css/products.css">
+<link rel="stylesheet" href="/css/product.css">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+
+<%- include("./includes/nav.ejs") %>
+
+<!-- main div  -->
+<div style="margin-top:92px" >
+<div class="container-fluid" style="z-index:-2">
+    <!-- upar wala green -->
+    <div class="row">
+        <div class="col-12"  style="height: 26px;width: 100%;background-color: rgb(52, 182, 106);">
+        </div>
+    </div>
+    <!-- heading wala part -->
+    <div class="row my-3 mx-2">
+        <div class="col-12">
+            <p class="small text-primary">Home / Clothing / Men Clothing / Shirts / Roadster Shirts > More By Roadster</p>
+        </div>
+    </div>
+    <div class="container-fluid pb-4">
+        <div class="row">
+            <div class="col-2 ">
+                <p>Filters</p>
+                <hr>
+                <form action="#">
+                    <p>Categories</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="T-Shirt" name="example1">
+                        <label class="custom-control-label" for="T-Shirt">T-Shirt</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Shirt" name="example1">
+                        <label class="custom-control-label" for="Shirt">Shirt</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Jeans" name="example1">
+                        <label class="custom-control-label" for="Jeans">Jeans</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Trousers" name="example1">
+                        <label class="custom-control-label" for="Trousers">Trousers</label>
+                    </div>
+                    <hr>
+                    <p>Brands</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Roadster" name="example1">
+                        <label class="custom-control-label" for="Roadster">Roadster</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Puma" name="example1">
+                        <label class="custom-control-label" for="Puma">Puma</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="H&M" name="example1">
+                        <label class="custom-control-label" for="H&M">H&M</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Zara" name="example1">
+                        <label class="custom-control-label" for="Zara">Zara</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="Nike" name="example1">
+                        <label class="custom-control-label" for="Nike">TrouNikesers</label>
+                    </div>
+                    <hr>
+                    <p>Price</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="pr1" name="example1">
+                        <label class="custom-control-label" for="pr1">Rs. 1000 ot Rs. 1999</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="pr2" name="example1">
+                        <label class="custom-control-label" for="pr2">Rs. 2000 ot Rs. 2999</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="pr3" name="example1">
+                        <label class="custom-control-label" for="pr3">Rs. 3000 ot Rs. 3999</label>
+                    </div>
+                    <hr>
+                    <p>Discount Range</p>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="d1" name="example1">
+                        <label class="custom-control-label" for="d1">10% and above</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="d2" name="example1">
+                        <label class="custom-control-label" for="d2">20% and above</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="d3" name="example1">
+                        <label class="custom-control-label" for="d3">30% and above</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="d4" name="example1">
+                        <label class="custom-control-label" for="Zard4a">40% and above</label>
+                    </div>
+                    <hr>
+                </form>
+            </div>
+            <div class="col-10 bg-muted" style="border-left: 1px solid gray;">
+                <p>Products</p>
+                <hr>
+                <div class="row m-pdd">
+                    <!-- all products loop -->
+                    <% for (let product of prods) { %>
+                        <div class="col-3 pb-3">
+                            <a href="/shop/product/<%= product._id %>" class="card m-card m-col">
+                                <img class="card-img-top" src="<%= product.imageUrl %>" alt="Card image cap" height="280px" width="180px">
+                                <div class="card-body">
+                                    <h4 ><%= product.brand %></h4>
+                                    <p class="m-dess" ><%= product.desc %></p>
+                                    <div>
+                                        <span class="m-pri mr-2">Rs. <%= product.price %> </span>
+                                        <del class="m-dell mr-2">Rs. 1299</del>
+                                        <span class="m-dis">( 30% OFF )</span>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <% } %>
+                    <!-- end of all products loop -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%- include("./includes/end.ejs") %>

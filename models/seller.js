@@ -17,15 +17,16 @@ const sellerSchema = new Schema ({
                 productId : {
                     type:Schema.Types.ObjectId,
                     required : true
-                },
-                size : { 
-                    type : Number,
-                    required : true
-                },
-                quantity : {
-                    type : Number,
-                    required : true
                 }
+            //     ,
+            //     size : { 
+            //         type : Number,
+            //         required : true
+            //     },
+            //     quantity : {
+            //         type : Number,
+            //         required : true
+            //     }
             }
         ]
     }

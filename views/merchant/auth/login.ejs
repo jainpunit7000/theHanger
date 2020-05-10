@@ -1,0 +1,31 @@
+<%- include("../includes/head.ejs") %>
+<link rel="stylesheet" href="./css/login.css">
+
+<div class="m-top">
+  <a href="#" class="m-login-head">TheHanger</a>
+  <span style="font-size: 14px;">(Business)</span>
+</div>
+<div class="container-fluid">
+    <div class="row justify-content-between m-m-login" style="margin-top: auto;">
+        <div class="col-4">
+            
+        </div>
+        <div class="col-3 m-d-login mt-4 pt-5" style="padding:0px">
+            <form action="/auth/merchant-login" method="POST" class="my-5 p-2 text-center">
+                <div class="form-group">
+                  <label for="email">Email address <small> (Business)</small></label> <br>
+                  <input type="email" name="email" class="m-inp">
+                </div>
+                <div class="form-group">
+                  <label>Password</label> <br>
+                  <input type="password" name="password" class="m-inp">
+                </div>
+                <button type="submit" class="btn btn-outline-light">Login</button>
+              </form>
+              <a href="#" class="m-forgot">Forgot Password</a>
+        </div>
+        <div class="col-4">
+
+        </div>
+    </div>
+</div>

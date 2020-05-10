@@ -9,13 +9,18 @@ const router = express.Router();
 //index-section - anurag
 router.get('/',shopController.getHome);
 
-// men-section - anurag
-router.get("/shop/men",shopController.getProductsShopMen);
+//pj
+router.get("/shop",shopController.getShop);
+router.get("/shop/product/:productId",shopController.getProduct);
 
-router.get("/shop/men/:productId",shopController.getProductMen);
+// men-section - anurag
+// router.get("/shop/men",shopController.getProductsShopMen);
+
+// router.get("/shop/men/:productId",shopController.getProductMen);
 
 //     //topwear
-//     router.get('/men-topwear',shopController.getProductsMenTopWear);
+// router.get('men-top-wear',shopController.getProductsMenTopWear);
+
 //     router.get('/men-tshirts',shopController.getProductsMenTshirts);
 //     router.get('/men-shirts',shopController.getProductsMenShirts);
 //     router.get('/men-sweaters',shopController.getProductsMenSweaters);

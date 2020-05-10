@@ -1,0 +1,35 @@
+.m-back{
+    background:linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url("../images/startBack.png") no-repeat center center /cover;
+    width: 100% ;
+    height: 100vh;
+    padding: 80px;
+}
+.m-margin{
+    border-right: 1px solid rgb(133, 129, 129);
+}
+.m-txt{
+    font-weight: 500;
+    font-size: 36px;
+    font-style: italic;
+    color: black;
+}
+.m-txt:hover{
+    color: black;
+}
+.m-high:hover{
+    color: rgb(65, 42, 9);
+}
+span{
+    font-size: 18px;
+}
+.m-all p{
+    font-size: 17px;
+}
+.m-all a{
+    width: 50%;
+}
+.m-all a:hover{
+    background-color: blanchedalmond;
+    color: black;
+    box-shadow: 1px 2px 14px  blanchedalmond;
+}

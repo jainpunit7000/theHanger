@@ -12,5 +12,10 @@ router.get('/add-product',adminController.getAddProduct);
 //post add-product
 router.post("/add-product",adminController.postAddProduct);
 
+//get merchant start
+router.get("/sell",adminController.getMerchantStart) ;
+
+//get merchant main
+router.get("/merchant-console",adminController.getMerchantMain) ;
 
 module.exports = router;

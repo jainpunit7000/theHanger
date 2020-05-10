@@ -1,14 +1,23 @@
+//pj
 const mongoose = require("mongoose") ;
 
 const Schema = mongoose.Schema;
 
 const productSchema = new Schema({
+    userId : {
+        type: Schema.Types.ObjectId,
+        required : true 
+    },
     title : {
         type : String,
         required : true
     },
     price : {
         type: Number,
+        required : true
+    },
+    imageUrl:{
+        type : String,
         required : true
     },
     brand : {
@@ -31,33 +40,27 @@ const productSchema = new Schema({
         type : String,
         required : true
     },
-    size38 : {
-        type : Boolean,
-        default : false
+    size:{
+        size38 : {
+            // isAvailable : { type : Boolean },
+            quantity : {type : Number}
+        },
+        size40 : {
+            // isAvailable : { type : Boolean },
+            quantity : {type : Number}
+        },
+        size42 : {
+            // isAvailable : { type : Boolean },
+            quantity : {type : Number}
+        },
+        size44 : {
+            // isAvailable : { type : Boolean },
+            quantity : {type : Number}
+        }
     },
-    size40 : {
-        type : Boolean,
-        default : false
-    },
-    size42 : {
-        type : Boolean,
-        default : false
-    },
-    size44 : {
-        type : Boolean,
-        default : false
-    },
-    quan38 : {
-        type : Number
-    },
-    quan40 : {
-        type : Number
-    },
-    quan42 : {
-        type : Number
-    },
-    quan44 : {
-        type : Number
+    totalQuantity : {
+        type : Number ,
+        required : true
     }
 });
 
