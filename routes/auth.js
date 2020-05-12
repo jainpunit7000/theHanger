@@ -13,6 +13,12 @@ router.get('/login',authController.getLogin);
 //post user login
 router.post("/login",authController.postLogin);
 
+//get user signUp
+router.get('/signUp',authController.getSignUp);
+
+//post user signUp
+router.post("/signUp",authController.postSignUp);
+
 //get merchant login
 router.get('/merchant-login',authController.getMerchantLogin);
 
@@ -26,7 +32,7 @@ router.get('/merchant-signUp',authController.getMerchantSignUp);
 router.post("/merchant-signUp",authController.postMerchantSignUp);
 
 //post merchant logout
-router.get("/logout",authController.postMerchantLogout);
+router.get("/logout",authController.postLogout);
 
 
 module.exports = router;

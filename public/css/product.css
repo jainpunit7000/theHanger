@@ -72,3 +72,8 @@
     border-radius: 6px;
     box-shadow: 2px 2px 2px 2px gray;
 } */
+
+.active{
+    color: white; 
+    background-color: rgb(9, 47, 97) ;
+}

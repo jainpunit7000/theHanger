@@ -47,9 +47,10 @@ const authRoutes = require('./routes/auth');
 
 //work - pj
 app.use(express.static(path.join(__dirname,"/public"))) ;
-// app.use((re,res,next) => {
-//     res.render(path.join(__dirname,".","views","admin","add-product.ejs"))
-// });
+app.use((req,res,next) => {
+    res.locals.isAuth = req.session.isLoggedIn ;
+    next() ;
+});
 
 //RoutesCalled - anurag
 app.use(adminRoutes);

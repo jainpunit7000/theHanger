@@ -6,7 +6,7 @@
         <!-- navbar -->
         <nav class="navbar navbar-expand-md fixed-top m-navbar">
 
-            <a href="#" class="navbar-brand m-brand" ><img src="/images/newLogo.jpg" width="50px" height="35px"></a>
+            <a href="/shop" class="navbar-brand m-brand" ><img src="/images/newLogo.jpg" width="50px" height="35px"></a>
             <button type="button" class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nv" >
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -139,10 +139,14 @@
                             Profile
                         </a>
                         <div class="dropdown-contentPF" style="width: 300px;">
-                            <a href="/auth/login">Login</a>
-                            <span>/</span>
-                            <a href="/auth/signUp">Sign Up</a> <br>
-                            <a href="/auth/logout">Logout</a>
+                            <% if (isAuth) { %>
+                                <p class="m-username">Hi, <span style="font-weight: 500;"><%= userName %></span></p>
+                                <a href="/auth/logout">Logout</a>
+                            <% } else { %>
+                                <a href="/auth/login">Login</a>
+                                <span>/</span>
+                                <a href="/auth/signUp">Sign Up</a> <br>
+                            <% } %>
                             
                             <ul class="dc-ul" >
                                 <li><a href="/user/orders">Orders</a></li>

@@ -3,10 +3,11 @@ $(document).ready(function(){
     $(".dropdown").hover(function(){
         $(".chang").css({
             "position": "absolute",
+            "margin-top" : "90px",
             "height": $("body").height(),
             "width": "100%",
             "opacity": "0.3",
-            "background": "rgba(0,0,0,.5)",
+            "background": "rgba(0,0,0,.6)",
             "top": "0%",
             "left": "0%",
             "z-index":"2" ,
@@ -35,20 +36,55 @@ $(document).ready(function(){
       document.getElementById("b1").onclick = function() {
           rem() ;
           $("#b1").addClass("Highlight") ;
+          $("#product_size1").val("38") ;
+          $("#product_size2").val("38") ;
       };
       document.getElementById("b2").onclick = function() {
           rem() ;
           $("#b2").addClass("Highlight") ;
+          $("#product_size1").val("40") ;
+          $("#product_size2").val("40") ;
       };
       document.getElementById("b3").onclick = function() {
           rem() ;
           $("#b3").addClass("Highlight") ;
+          $("#product_size1").val("42") ;
+          $("#product_size2").val("42") ;
       };
       document.getElementById("b4").onclick = function() {
           rem() ;
           $("#b4").addClass("Highlight") ;
+          $("#product_size1").val("44") ;
+          $("#product_size2").val("44") ;
       };
-    // end of size buttons on product page
+      $("#add_to_bag").click(function(){
+        //   console.log("----> bag submitted") ;
+          $("#bag_form").submit() ;
+      })
+      $("#add_to_wishlist").click(function(){
+        // console.log("----> wishlist submitted") ;
+          $("#wishlist_form").submit() ;
+      })
 
-//end of jQuery
+      //form submit options 
+    //   $("#add_to_bag").onclick( function() {
+    //         $("#size_form").attr("action","/add_to")
+    //   })
+    //   document.getElementById("#add_to_bag").onClick = function(prodId) {
+        
+    //   }
+    //   document.getElementById("#wishlist").onClick = function(prodId) {
+
+    //   }
+      // end of size buttons on product page
+      //end of jQuery
 });
+
+    // function addToBag(prodId){
+    //     console.log("--> here") ;
+    //     $("#size_form").attr("action","/add-to-bag/" + prodId) ;
+    //     document.getElementById("#size_form").submit() ;
+    // }
+    // function addToWishlsit(prodId){
+
+    // }

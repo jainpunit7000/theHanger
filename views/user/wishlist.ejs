@@ -8,73 +8,23 @@
             <div class="row">
                 <div class="col-12 mb-5">
                     <span class="m-highlight">My Wishlist</span>
-                    <span class="m-inc">1 item</span>
+                    <span class="m-inc"><%= products.length %> items</span>
                 </div>
-                <div class="col-3 text-center mb-4">
-                    <div class="m-margin">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b3/49/b349d9e57192a24357906baa2ac8d29ef255eb98.jpg],origin[dam],category[men_tshirtstanks_shortsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/main]"
-                        width="98%" height="80%" alt="img">
-                        <button class="m-cross">X</button>
-                        <p>Fame Forever Lifestyle T-Shirt</p>
-                        <span class="m-t1"> Rs. 663 </span>
-                        <span class="m-t2">Rs. 1299</span>
-                        <span class="m-t3">( 10% OFF )</span>
-                        <hr>
-                        <button class="btn m-btn">Move To Bag</button>
-                        </div>
-                </div>
-                <div class="col-3 text-center mb-4">
-                    <div class="m-margin">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b3/49/b349d9e57192a24357906baa2ac8d29ef255eb98.jpg],origin[dam],category[men_tshirtstanks_shortsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/main]"
-                        width="98%" height="80%" alt="img">
-                        <button class="m-cross">X</button>
-                        <p>Fame Forever Lifestyle T-Shirt</p>
-                        <span class="m-t1"> Rs. 663 </span>
-                        <span class="m-t2">Rs. 1299</span>
-                        <span class="m-t3">( 10% OFF )</span>
-                        <hr>
-                        <button class="btn m-btn">Move To Bag</button>
-                        </div>
-                </div>
-                <div class="col-3 text-center mb-4">
-                    <div class="m-margin">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b3/49/b349d9e57192a24357906baa2ac8d29ef255eb98.jpg],origin[dam],category[men_tshirtstanks_shortsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/main]"
-                        width="98%" height="80%" alt="img">
-                        <button class="m-cross">X</button>
-                        <p>Fame Forever Lifestyle T-Shirt</p>
-                        <span class="m-t1"> Rs. 663 </span>
-                        <span class="m-t2">Rs. 1299</span>
-                        <span class="m-t3">( 10% OFF )</span>
-                        <hr>
-                        <button class="btn m-btn">Move To Bag</button>
-                        </div>
-                </div>
-                <div class="col-3 text-center mb-4">
-                    <div class="m-margin">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b3/49/b349d9e57192a24357906baa2ac8d29ef255eb98.jpg],origin[dam],category[men_tshirtstanks_shortsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/main]"
-                        width="98%" height="80%" alt="img">
-                        <button class="m-cross">X</button>
-                        <p>Fame Forever Lifestyle T-Shirt</p>
-                        <span class="m-t1"> Rs. 663 </span>
-                        <span class="m-t2">Rs. 1299</span>
-                        <span class="m-t3">( 10% OFF )</span>
-                        <hr>
-                        <button class="btn m-btn">Move To Bag</button>
+                <% for ( let product of products ) { %>
+                    <div class="col-3 text-center mb-4">
+                        <div class="m-margin">
+                            <img src="<%= product.productId.imageUrl %>"
+                            width="98%" height="310px" alt="img">
+                            <a href="/shop/remWishlist/<%= product.productId._id %>" class="m-cross" >X</a>
+                            <p><%= product.productId.desc  %></p>
+                            <span class="m-t1"> Rs. <%= product.productId.price  %> </span>
+                            <span class="m-t2">Rs. 1299</span>
+                            <span class="m-t3">( 10% OFF )</span>
+                            <hr>
+                            <a href="/shop/product/<%= product.productId._id %>" class="btn m-btn">Move To Bag</a>
+                            </div>
                     </div>
-                </div>
-                <div class="col-3 text-center mb-4">
-                    <div class="m-margin">
-                        <img src="https://lp2.hm.com/hmgoepprod?set=quality[79],source[/b3/49/b349d9e57192a24357906baa2ac8d29ef255eb98.jpg],origin[dam],category[men_tshirtstanks_shortsleeve],type[DESCRIPTIVESTILLLIFE],res[m],hmver[1]&call=url[file:/product/main]"
-                        width="98%" height="80%" alt="img">
-                        <button class="m-cross">X</button>
-                        <p>Fame Forever Lifestyle T-Shirt</p>
-                        <span class="m-t1"> Rs. 663 </span>
-                        <span class="m-t2">Rs. 1299</span>
-                        <span class="m-t3">( 10% OFF )</span>
-                        <hr>
-                        <button class="btn m-btn">Move To Bag</button>
-                        </div>
-                </div>
+                <% } %>
             </div>
         </div>
 <%- include("./includes/end.ejs") %>

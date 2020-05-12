@@ -12,6 +12,13 @@ router.get('/',shopController.getHome);
 //pj
 router.get("/shop",shopController.getShop);
 router.get("/shop/product/:productId",shopController.getProduct);
+router.post("/shop/add-to-bag/:prodId",shopController.postAddToBag) ;
+router.get("/shop/add-to-wishlist/:prodId",shopController.postAddToWishlist) ;
+router.get("/user/wishlist",shopController.getWishlist) ;
+router.get("/user/bag",shopController.getBag) ;
+router.get("/user/bag/remove/:bagId",shopController.getRemoveFromBag) ;
+router.get("/user/bag/remove-and-add/:bagId",shopController.getRemoveAndAdd) ;
+router.get("/shop/remWishlist/:prodId",shopController.getRemoveFromWishlist) ;
 
 // men-section - anurag
 // router.get("/shop/men",shopController.getProductsShopMen);

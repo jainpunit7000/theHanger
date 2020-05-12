@@ -37,6 +37,13 @@
                     <br>
                     <span class="m-tax ">inclusive of all taxes</span>
                     <h4 class="my-4" >SELECT SIZE</h4>
+                    <form id="bag_form" action="/shop/add-to-bag/<%= product._id %>" method="POST" >
+                        <input type="text" id="product_size1" hidden name="size" value="">
+                    </form>
+                    <form id="wishlist_form" action="/shop/add-to-wishlist/<%= product._id %>" >
+                        <input type="text" id="product_size2" hidden name="size" value="">
+                    </form>
+
                     <% if( size38 ) { %>
                         <button class="m-radio-btn" id="b1">38</button>
                     <% } else { %>
@@ -59,8 +66,8 @@
                     <% } %>
                     <br>
                     <div>
-                        <button class="m-fnl-btn btn-lg btn"><i class="fa fa-shopping-bag pr-2" aria-hidden="true"></i> ADD TO BAG</button>
-                        <button class="btn btn-lg m-fnl-btn"><i class="fa fa-bookmark pr-2"></i> WISHLIST</button>
+                        <button id="add_to_bag" class="m-fnl-btn btn-lg btn"><i class="fa fa-shopping-bag pr-2" aria-hidden="true"></i> ADD TO BAG</button>
+                        <button id="add_to_wishlist" class="btn btn-lg m-fnl-btn"><i class="fa fa-bookmark pr-2"></i> WISHLIST</button>
                     </div>
                     <hr>
                     <div>

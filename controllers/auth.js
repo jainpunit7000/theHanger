@@ -1,5 +1,6 @@
 //PJ
 const Seller = require("../models/seller");
+const Buyer = require("../models/buyer") ;
 const bcrypt = require("bcryptjs") ;
 exports.getLogin = (req,res,next) => {
     res.render("user/auth/login",{
@@ -8,10 +9,32 @@ exports.getLogin = (req,res,next) => {
     })   
 }
 exports.postLogin = (req,res,next) => {
-    res.render("user/home",{
-        pageTitle : 'Add-Product',
-        path: "/home"
-    }) 
+    const email = req.body.email ;
+    const password = req.body.password ;
+    Buyer.findOne({email:email})
+        .then( buyer => {
+            if( !buyer ){
+                return res.redirect("/auth/login") ;
+            }
+            return bcrypt.compare(password,buyer.password)
+                .then( match => {
+                    // console.log("-->here3") ;
+                    if( match ){
+                        // console.log("-->here4") ;
+                        req.session.isLoggedIn = true ;
+                        req.session.buyer = buyer ;
+                        console.log("----> Buyer is logged in") ;
+                        return req.session.save(err => {
+                            console.log("-->" + err) ;
+                            res.redirect("/shop") ;
+                        })
+                    }
+                    return res.redirect("/auth/login") ;
+                } )
+        } )
+        .catch(err => {
+            console.log(err) ;
+        }) 
 }
 exports.getSignUp = (req,res,next) => {
     res.render("user/auth/sign-up",{
@@ -20,10 +43,34 @@ exports.getSignUp = (req,res,next) => {
     })   
 }
 exports.postSignUp = (req,res,next) => {
-    res.render("user/home",{
-        pageTitle : 'Add-Product',
-        path: "/home"
-    }) 
+    const email = req.body.email ;
+    const password = req.body.password ;
+    Buyer.findOne({email:email})
+        .then( buyer => {
+            if( buyer ){
+                console.log("----> error failed") ;
+                return res.redirect("/auth/signUp") ;
+            }
+            return bcrypt.hash(password,12)
+        })
+        .then( hashedPassword => {
+            if(hashedPassword){
+                const byr = new Buyer({
+                    email : email,
+                    password : hashedPassword
+                })
+                return byr.save().then( result => {
+                    console.log("----> new user created") ;
+                    res.redirect("/auth/login") ;
+                })
+                .catch( err => {
+                    console.log(err) ;
+                })
+            }
+        } )
+        .catch( err => {
+            console.log(err) ;
+        })
 }
 exports.getMerchantLogin = (req,res,next) => {
     res.render("merchant/auth/login",{
@@ -76,8 +123,7 @@ exports.postMerchantSignUp = (req,res,next) => {
     Seller.findOne({email:email})
         .then( merchant => {
             if( merchant ){
-                console.log("----> llll") ;
-                return res.redirect("/merchant-signUp") ;
+                return res.redirect("/auth/merchant-signUp") ;
             }
             return bcrypt.hash(password,12) ;
         } )
@@ -97,10 +143,16 @@ exports.postMerchantSignUp = (req,res,next) => {
         })
 }
 
-exports.postMerchantLogout = (req, res, next) => {
+exports.postLogout = (req, res, next) => {
+    let isMerchant = true ;
+    if( !req.session.merchant )
+        isMerchant = false ;
     req.session.destroy(err => {
-      console.log(err);
-      res.redirect('/sell');
+    console.log(err);
+    if( isMerchant )
+        res.redirect('/sell');
+    else
+        res.redirect("/shop") ;
     });
 };
   
