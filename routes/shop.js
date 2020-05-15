@@ -3,22 +3,29 @@ const path = require('path');
 const express = require('express');
 
 const shopController = require('../controllers/shop');
+const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
 
-//index-section - anurag
 router.get('/',shopController.getHome);
 
-//pj
 router.get("/shop",shopController.getShop);
+
 router.get("/shop/product/:productId",shopController.getProduct);
-router.post("/shop/add-to-bag/:prodId",shopController.postAddToBag) ;
-router.get("/shop/add-to-wishlist/:prodId",shopController.postAddToWishlist) ;
-router.get("/user/wishlist",shopController.getWishlist) ;
-router.get("/user/bag",shopController.getBag) ;
-router.get("/user/bag/remove/:bagId",shopController.getRemoveFromBag) ;
-router.get("/user/bag/remove-and-add/:bagId",shopController.getRemoveAndAdd) ;
-router.get("/shop/remWishlist/:prodId",shopController.getRemoveFromWishlist) ;
+
+router.post("/shop/add-to-bag/:prodId",isAuth,shopController.postAddToBag) ;
+
+router.get("/shop/add-to-wishlist/:prodId",isAuth,shopController.postAddToWishlist) ;
+
+router.get("/user/wishlist",isAuth,shopController.getWishlist) ;
+
+router.get("/user/bag",isAuth,shopController.getBag) ;
+
+router.get("/user/bag/remove/:bagId",isAuth,shopController.getRemoveFromBag) ;
+
+router.get("/user/bag/remove-and-add/:bagId",isAuth,shopController.getRemoveAndAdd) ;
+
+router.get("/shop/remWishlist/:prodId",isAuth,shopController.getRemoveFromWishlist) ;
 
 // men-section - anurag
 // router.get("/shop/men",shopController.getProductsShopMen);

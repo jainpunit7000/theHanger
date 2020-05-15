@@ -11,7 +11,7 @@ const Buyer = require('./models/buyer');
 
 const MONGODB_URI = 'mongodb+srv://anurag:1ukBCbEqTxMCe2gz@cluster0-p7ghp.mongodb.net/shop';
 
-//PJ
+//SessionInitinalization
 const session = require("express-session") ;
 const mongoDbStore = require("connect-mongodb-session")(session) ;
 const store = new mongoDbStore({
@@ -22,14 +22,15 @@ const store = new mongoDbStore({
 
 const app = express() ;
 
-//body-parser  related code - anurag
+//body-parser
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static(path.join(__dirname,"/public"))) ;
 
-// setting viw engine to ejs - pj
+// setting viw engine - ejs
 app.set('view engine','ejs');
 app.set('views','views') ;
 
-// PJ setting session middleware
+//SettingSessionMiddleware
 app.use(
     session({
         secret:"you can share any of your secrets with me :)",
@@ -39,52 +40,35 @@ app.use(
     })
 )
 
-//routesRegistered - anurag
+//MakingUserAvailable
+app.use((req, res, next) => {
+    if (!req.session.buyer) {
+      return next();
+    }
+    Buyer.findById(req.session.buyer._id)
+      .then(buyer => {
+        req.buyer = buyer;
+        next();
+      })
+      .catch(err => console.log(err));
+  });
 
+//RoutesRegistered
 const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 const authRoutes = require('./routes/auth');
 
-//work - pj
-app.use(express.static(path.join(__dirname,"/public"))) ;
+//SessionMiddleware
 app.use((req,res,next) => {
     res.locals.isAuth = req.session.isLoggedIn ;
     next() ;
 });
 
-//RoutesCalled - anurag
+//RoutesCalled
 app.use(adminRoutes);
 app.use(shopRoutes);
-//pj
-app.use("/auth",authRoutes);
-
+app.use('/auth',authRoutes);
 app.use(errorController.get404);
-
-// mongooseConnection - anurag
-// mongoose
-// .connect(MONGODB_URI)
-// .then(result => {
-//     console.log("----> connected") ;
-
-//     const buyer = new Buyer ({
-//         name : 'Punit',
-//         email : 'jainPunit7000@gmail.com',
-//         wishlist : [],
-//         bag : []
-//     });
-//     buyer.save();
-//     const seller = new Seller ({
-//         name : 'Anurag',
-//         email : 'davanu100@gmail.com',
-//         password : 'theHanger',
-//         addedProducts : []
-//     });
-//     seller.save();
-//     app.listen(3000);
-// })
-// .catch(err => {
-//     console.log(err);
-// });
 
 //pj
 mongoose.connect(MONGODB_URI)

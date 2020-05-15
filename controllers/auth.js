@@ -4,7 +4,7 @@ const Buyer = require("../models/buyer") ;
 const bcrypt = require("bcryptjs") ;
 exports.getLogin = (req,res,next) => {
     res.render("user/auth/login",{
-        pageTitle : 'Add-Product',
+        pageTitle : 'Login Please',
         path: "/login"
     })   
 }
