@@ -1,0 +1,194 @@
+<%- include("./includes/head.ejs") %>
+<link rel="stylesheet" href="./css/util.css">
+<link rel="stylesheet" href="./css/footer.css">
+<link rel="stylesheet" href="./css/login.css">
+<link rel="stylesheet" href="./css/finalize.css">
+<%- include("./includes/nav.ejs") %>
+
+<!-- main div  -->
+<div style="margin-top:92px;min-height: 350px;" >
+  <div class="container-fluid">
+      <div class="row justify-content-between m-m-login" style="background-color: rgb(208, 221, 21)">
+        <div class="col-12 pt-4">
+            <form action="/corporate/edit" method="POST" class="text-center p-4 m-d-login">
+              <div class="row justify-content-center align-items-center pt-5">
+                <div class="col-4" style="display: inline-block;float: none;vertical-align:middle ;">
+                  <p>Categories</p>
+                  <div class="form-group">
+                    <label for="cat1">Cat-1 </label>
+                    <input type="text" name="cat1" readonly class="m-inp" value="<%= product.cat1 %>">
+                  </div>
+                  <div class="form-group">
+                    <label for="cat2">Cat-2</label>
+                    <input type="text" name="cat2" readonly class="m-inp" value="<%= product.cat2 %>">
+                  </div>
+                  <div class="form-group">
+                    <label for="cat3">Cat-3</label>
+                    <input type="text" name="cat3" readonly class="m-inp" value="<%= product.cat3 %>">
+                  </div>
+                  <p>Details</p>
+                  <div class="form-group">
+                    <label>Title</label>
+                    <input type="text" name="title" class="m-inp" autocomplete="off" value="<%= product.title %>">
+                  </div>
+                  <div class="form-group">
+                    <label>Brand</label>
+                    <input type="text" name="brand" class="m-inp" value="<%= product.brand %>">
+                  </div>
+                  <div class="form-group">
+                    <label>Desc</label>
+                    <input type="text" name="desc" class="m-inp" autocomplete="off" value="<%= product.desc %>">
+                  </div>
+                </div>
+                <div class="col-4" style="display: inline-block;float: none;vertical-align:middle ;">
+                    <p>Price</p>
+                    <div class="form-group">
+                      <label>Seller</label>
+                      <input type="number" name="price"class="m-inp" autocomplete="off" value="<%= product.price %>">
+                    </div>
+                    <div class="form-group">
+                      <label>current</label>
+                      <input type="number" name="currentPrice" autocomplete="off" class="m-inp" value="<%= product.currentPrice %>">
+                    </div>
+                    <div class="form-group">
+                      <label>Discount</label>
+                      <input type="number" name="discount" autocomplete="off" class="m-inp" value="<%= product.discount %>">
+                    </div>
+                    <% if ( product.cat3 != "girlsfootwear" && product.cat3 != "boysfootwear" && product.cat3 != "footwear" && product.cat3 != "saree" ) { %>
+                        <p>Size V/S Quantity</p>
+                        <div class="form-group">
+                            <label>size L</label>
+                            <input type="number" name="large" autocomplete="off" class="m-inp" value="<%= product.size[2].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size M</label>
+                            <input type="number" name="medium" autocomplete="off" class="m-inp" value="<%= product.size[1].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size S</label>
+                            <input type="number" name="small" autocomplete="off" class="m-inp" value="<%= product.size[0].quantity %>">
+                        </div>
+                    <% } %> 
+                    <% if ( product.cat3 == "saree" ) { %>
+                        <p>Size V/S Quantity</p>
+                        <div class="form-group">
+                            <label>oneSize</label>
+                            <input type="number" name="oneSize" autocomplete="off" class="m-inp" value="<%= product.size[0].quantity %>">
+                        </div>
+                    <% } %>
+                    <% if ( product.cat2 == "girlsfootwear" || product.cat2 == "boysfootwear" ) { %>
+                        <p>Size V/S Quantity</p>
+                        <div class="form-group">
+                            <label>size 1</label>
+                            <input type="number" name="one" autocomplete="off" class="m-inp" value="<%= product.size[3].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 2</label>
+                            <input type="number" name="two" autocomplete="off" class="m-inp" value="<%= product.size[2].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 3</label>
+                            <input type="number" name="three" autocomplete="off" class="m-inp" value="<%= product.size[1].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 4</label>
+                            <input type="number" name="four" autocomplete="off" class="m-inp" value="<%= product.size[0].quantity %>">
+                        </div>
+                    <% } %>
+                    <% if ( product.cat2 == "footwear" ) { %>
+                        <p>Size V/S Quantity</p>
+                        <div class="form-group">
+                            <label>size 6</label>
+                            <input type="number" name="six" autocomplete="off" class="m-inp" value="<%= product.size[4].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 7</label>
+                            <input type="number" name="seven" autocomplete="off" class="m-inp" value="<%= product.size[3].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 8</label>
+                            <input type="number" name="eight" autocomplete="off" class="m-inp" value="<%= product.size[2].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 9</label>
+                            <input type="number" name="nine" autocomplete="off" class="m-inp" value="<%= product.size[1].quantity %>">
+                        </div>
+                        <div class="form-group">
+                            <label>size 10</label>
+                            <input type="number" name="ten" autocomplete="off" class="m-inp" value="<%= product.size[0].quantity %>">
+                        </div>
+                    <% } %>
+                </div>
+                <div class="col-4" style="display: inline-block;float: none;vertical-align:middle ;">
+                  <p>Images</p>
+                    <% if (product.image[0]) { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image1" autocomplete="off" class="m-inp" value="<%= product.image[0].url %>">
+                        </div>
+                    <% } else { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image1" autocomplete="off" class="m-inp" value="">
+                        </div>
+                    <% } %>
+                    <% if (product.image[1]) { %>
+                        <div class="form-group">
+                            <label>image2</label>
+                            <input type="text" name="image2" autocomplete="off" class="m-inp" value="<%= product.image[1].url %>">
+                        </div>
+                    <% } else { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image2" autocomplete="off" class="m-inp" value="">
+                        </div>
+                    <% } %>
+                    <% if (product.image[2]) { %>
+                        <div class="form-group">
+                            <label>image3</label>
+                            <input type="text" name="image3" autocomplete="off" class="m-inp" value="<%= product.image[2].url %>">
+                        </div>
+                    <% } else { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image3" autocomplete="off" class="m-inp" value="">
+                        </div>
+                    <% } %>
+                    <% if (product.image[3]) { %>
+                        <div class="form-group">
+                            <label>image4</label>
+                            <input type="text" name="image4" autocomplete="off" class="m-inp" value="<%= product.image[3].url %>">
+                        </div>
+                    <% } else { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image4" autocomplete="off" class="m-inp" value="">
+                        </div>
+                    <% } %>
+                    <% if (product.image[4]) { %>
+                        <div class="form-group">
+                            <label>image5</label>
+                            <input type="text" name="image5" autocomplete="off" class="m-inp" value="<%= product.image[4].url %>">
+                        </div>
+                    <% } else { %>
+                        <div class="form-group">
+                            <label>image1</label>
+                            <input type="text" name="image5" autocomplete="off" class="m-inp" value="">
+                        </div>
+                    <% } %>
+                </div>
+                <!-- hidden -->
+                <div class="form-group">
+                    <input type="text" name="sellerId" hidden class="m-inp" value="<%= product.userId %>">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="productId" hidden class="m-inp" value="<%= product._id %>">
+                </div>
+                <button type="submit" class="btn btn-outline-light">Update</button>
+              </div>
+            </form>
+        </div>
+      </div>
+  </div>
+
+<%- include("./includes/end.ejs") %>

@@ -13,10 +13,11 @@
     box-shadow: 1px 1px 18px #c5c3c3;
     background-color: white ;
     margin : auto 0 ;
+    padding-bottom: 0px;
 }
 .m-brand{
-    margin-left: 50px ;
-    margin-right:65px ;
+    margin-left: 50px !important ;
+    margin-right:65px !important ;
 }
 .m-nav-ul a{
     color: rgb(65, 64, 64);
@@ -56,7 +57,9 @@
 }
 .m-nav-link{
     display:inline-block ;
-    margin: 0 15px;
+    padding-left : 15px ;
+    padding-right : 15px ;
+    margin: 0;
     font-size : 13px ;
     font-weight: 600;
 }
@@ -69,7 +72,7 @@
     text-decoration: none;
 }
 .m-nav-link img{
-    position: relative;
+    position: relative; 
     left: 27%;
 }
 .m-nav-ul{

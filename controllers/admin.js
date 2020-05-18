@@ -1,7 +1,6 @@
 const Product = require('../models/product');
 
 exports.postAddProduct = (req,res,next) => {
-    //pj
     const title  = req.body.title;
     const price = req.body.price;
     const brand = req.body.brand;
@@ -27,21 +26,6 @@ exports.postAddProduct = (req,res,next) => {
     if( !size44 )
         quan44 = 0 ;
     const totalQuantity = quan38 + quan40 + quan42 + quan44 ;
-    // console.log(title);
-    // console.log(price);
-    // console.log(brand);
-    // console.log(desc);
-    // console.log(cat1);
-    // console.log(cat2);
-    // console.log(cat3);
-    // console.log(size38);
-    // console.log(size40);
-    // console.log(size42);
-    // console.log(size44);
-    // console.log(quan38);
-    // console.log(quan40);
-    // console.log(quan42);
-    // console.log(quan44);
     const product = new Product({
         userId : req.session.merchant._id ,
         title : title,
@@ -66,7 +50,9 @@ exports.postAddProduct = (req,res,next) => {
                 quantity : quan44
             }
         },
-        totalQuantity: totalQuantity
+        totalQuantity: totalQuantity,
+        status : "Pending",
+        passedBy : null 
     });
     product
     .save()
@@ -82,20 +68,34 @@ exports.postAddProduct = (req,res,next) => {
 exports.getMerchantStart = (req,res,next) => {
     res.render('merchant/start',{
         pageTitle : 'merchant main',
-        path : '/add-product'
+        path : '/add-product',
+        userName : req.session.merchant ? req.session.merchant.email : ""
     });
 };
 
 exports.getMerchantMain = (req,res,next) => {
     res.render('merchant/main',{
         pageTitle : 'merchant main',
-        path : '/add-product'
+        path : '/add-product',
+        userName : req.session.merchant ? req.session.merchant.email : ""
     });
 };
 
 exports.getAddProduct = (req,res,next) => {
     res.render('merchant/admin/add-product',{
         pageTitle : 'Add-Product',
-        path : '/add-product'
+        path : '/add-product',
+        userName : req.session.merchant ? req.session.merchant.email : ""
     });
 };
+
+exports.getProductStatus = (req,res,next) => {
+    Product.find({userId : req.session.merchant._id})
+        .then( products => {
+            res.render("merchant/product-status",{
+                pageTitle : "Product Status",
+                products : products.reverse(),
+                userName : req.session.merchant ? req.session.merchant.email : ""
+            })
+        } )
+}

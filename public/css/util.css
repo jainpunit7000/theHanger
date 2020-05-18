@@ -1,0 +1,47 @@
+.m-util{
+    display: block;
+    width: 100%;
+    background-color: rgb(206, 206, 206);
+    height: 250px;
+    margin: 10px;
+    /* padding : 24px; */
+    border-radius: 10px;
+    color: black;
+}
+.m-util:hover{
+    color: black;
+    background-color: rgb(194, 193, 193);
+    /* box-shadow: 2px 3px 15px rgb(141, 133, 133); */
+    text-decoration: none;
+    font-size : 36px ;
+    transform: translateY(-2px);
+    transition: all 0.4s;
+}
+.m-up{
+    margin:20px;
+    color: rgb(255, 255, 255);
+}
+.m-im1{
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url("https://static.kent.ac.uk/nexus/ems/55.jpg") no-repeat center center /cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+.m-im2{
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url("https://www.rakhi.in/images/history-of-rakhi.jpg") no-repeat center center /cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+.m-im3{
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url("https://lh3.googleusercontent.com/proxy/qxYypQJnBRm2yKiAoR8sSDyqheVWQCC50dpoBDROc70r_z_bmgt1vGf95ACaFS4j5Oye7cp77q2R_MbnVlZYZGGtLNsuhycSqLms2AJetLAVmSMYOY3HR4bgArqq_F6F") no-repeat center center /cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}
+.m-im4{
+    background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.5)), url("https://www.hindustantimes.com/rf/image_size_1200x900/HT/p2/2020/05/01/Pictures/_77fe3546-8b78-11ea-8f61-783f666b6086.jpg") no-repeat center center /cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+}

@@ -1,6 +1,6 @@
 <%- include("./includes/head.ejs") %>
-<link rel="stylesheet" href="/css/products.css">
-<link rel="stylesheet" href="/css/product.css">
+<link rel="stylesheet" href="./css/products.css">
+<link rel="stylesheet" href="./css/product.css">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
 
 <%- include("./includes/nav.ejs") %>
@@ -107,14 +107,18 @@
                     <% for (let product of prods) { %>
                         <div class="col-3 pb-3">
                             <a href="/shop/product/<%= product._id %>" class="card m-card m-col">
-                                <img class="card-img-top" src="<%= product.imageUrl %>" alt="Card image cap" height="280px" width="180px">
+                                <img class="card-img-top" src="<%= product.image[0].url %>" alt="Card image cap" height="280px" width="180px">
                                 <div class="card-body">
                                     <h4 ><%= product.brand %></h4>
-                                    <p class="m-dess" ><%= product.desc %></p>
+                                    <p class="m-dess" ><%= product.title %></p>
                                     <div>
-                                        <span class="m-pri mr-2">Rs. <%= product.price %> </span>
-                                        <del class="m-dell mr-2">Rs. 1299</del>
-                                        <span class="m-dis">( 30% OFF )</span>
+                                        <% if ( product.discount > 0 ) { %>
+                                            <span class="m-pri mr-2">Rs. <%= (product.currentPrice)*(100 - product.discount)/(100) %> </span>
+                                            <del class="m-dell mr-2">Rs. <%= product.currentPrice %></del>
+                                            <span class="m-dis">( <%= product.discount %>% OFF )</span>
+                                        <% } else { %>
+                                            <span class="m-pri mr-2 pl-1">Rs. <%= product.currentPrice %> </span>
+                                        <% } %>
                                     </div>
                                 </div>
                             </a>

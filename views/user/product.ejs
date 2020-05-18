@@ -21,9 +21,11 @@
         <div class="row mx-2">
             <div class="col-7"> 
                 <div class="row justify-content-between p-2">
-                    <div class="col-6 p-2">
-                        <img src="<%= product.imageUrl %>" width="100%" height="450px" alt="">
-                    </div>
+                    <% for (img of product.image) { %>
+                        <div class="col-6 p-2">
+                            <img src="<%= img.url %>" width="100%" height="450px" alt="">
+                        </div>
+                    <% } %>
                 </div>
             </div>
             <div class="col-5 p-2">
@@ -31,49 +33,35 @@
                 <p class="text-muted  text-lg m-desc"><%= product.desc %></p>
                 <hr>
                 <div class="ml-2">
-                    <span class="m-price">Rs. <%= product.price %></span>
-                    <span class="m-del mx-3 text-muted"><del >Rs. 1299</del></span>
-                    <span class="text-warning m-disc">( 30% OFF )</span>
+                    <% if (product.discount > 0) { %>
+                        <span class="m-price">Rs. <%= (product.currentPrice)*(100 - product.discount)/(100) %></span>
+                        <span class="m-del mx-3 text-muted"><del >Rs. <%= product.currentPrice %></del></span>
+                        <span class="text-warning m-disc">( <%= product.discount %>% OFF )</span>
+                    <% } else { %>
+                        <span class="m-price">Rs. <%= product.currentPrice %></span>
+                    <% } %>
                     <br>
                     <span class="m-tax ">inclusive of all taxes</span>
                     <h4 class="my-4" >SELECT SIZE</h4>
+                    <%  for (let index=0;index < product.size.length ; index++ ) { %>
+                        <%  if ( product.size[index].quantity > 0 ) { %>
+                            <button class="m-radio-btn" value="<%= product.size[index].particularSize %>"  id="b<%= index+1 %>"><%= product.size[index].particularSize %></button>
+                        <% } else { %>
+                            <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b<%= index+1 %>"><%= product.size[index].particularSize %></button>
+                        <% } %>
+                    <% } %>
                     <form id="bag_form" action="/shop/add-to-bag/<%= product._id %>" method="POST" >
-                        <input type="text" id="product_size1" hidden name="size" value="">
+                        <input type="text" id="product_size" hidden name="size" value="">
                     </form>
-                    <form id="wishlist_form" action="/shop/add-to-wishlist/<%= product._id %>" >
-                        <input type="text" id="product_size2" hidden name="size" value="">
-                    </form>
-
-                    <% if( size38 ) { %>
-                        <button class="m-radio-btn" id="b1">38</button>
-                    <% } else { %>
-                        <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b1">38</button>
-                    <% } %>
-                    <% if( size40 ) { %>
-                        <button class="m-radio-btn" id="b2">40</button>
-                    <% } else { %>
-                        <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b2">40</button>
-                    <% } %>
-                    <% if( size42 ) { %>
-                        <button class="m-radio-btn" id="b3">42</button>
-                    <% } else { %>
-                        <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b3">42</button>
-                    <% } %>
-                    <% if( size44 ) { %>
-                        <button class="m-radio-btn" id="b4">44</button>
-                    <% } else { %>
-                        <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b4">44</button>
-                    <% } %>
                     <br>
                     <div>
                         <button id="add_to_bag" class="m-fnl-btn btn-lg btn"><i class="fa fa-shopping-bag pr-2" aria-hidden="true"></i> ADD TO BAG</button>
-                        <button id="add_to_wishlist" class="btn btn-lg m-fnl-btn"><i class="fa fa-bookmark pr-2"></i> WISHLIST</button>
+                        <a href="/shop/add-to-wishlist/<%= product._id %>" class="btn btn-lg m-fnl-btn"><i class="fa fa-bookmark pr-2"></i> WISHLIST</a>
                     </div>
                     <hr>
                     <div>
                         <h6 class="my-4" >PRODUCT DETAILS <i class="ml-2 fa fa-list-alt"></i> </h6>
-                        <p style="max-width: auto;font-size: 15px;" class="text-muted">Black and grey checked casual shirt, has a spread collar,
-                             a full button placket, long sleeves with roll-up tabs, a patch pocket, a curved hem</p>
+                        <p style="max-width: auto;font-size: 15px;" class="text-muted"><%= product.desc %></p>
                         <h6 class="mt-4">Material & Care</h6>
                         <div style="font-size: 15px;" >
                             <span class="text-muted" >Cotton</span> <br>
@@ -120,7 +108,7 @@
                             </div>
                         </div>
                         <hr>
-                        <p class="mt-4">Product Code : <span style="font-weight: 600;">2124555</span></p>
+                        <p class="mt-4">Product Code : <span style="font-weight: 600;"><%= (product._id).toString().substring(16,8) %></span></p>
                 </div>
             </div>
         </div>

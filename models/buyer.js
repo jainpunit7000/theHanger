@@ -14,16 +14,16 @@ const buyerSchema = new Schema({
     wishlist : {
         items : [
             {
-                productId : { type : Schema.Types.ObjectId , required : true,ref :'Product'}
+                productId : { type : Schema.Types.ObjectId , required : true,ref :'FinalProduct'}
             }
         ]
     },
     bag : {
         items : [
             {
-                productId : {type : Schema.Types.ObjectId, required : true,ref:'Product'},
+                productId : {type : Schema.Types.ObjectId, required : true,ref:'FinalProduct'},
                 quantity : {type : Number,required : true},
-                size : {type : Number,required : true}
+                size : {type : String,required : true}
             }
         ]
     }

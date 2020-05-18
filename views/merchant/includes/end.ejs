@@ -12,16 +12,13 @@
                 <div class="col-2">
                     <h6 class="m-head">UTILITIES</h6>
                     <a href="/m-user/add-product" class="m-link" >Add Product</a>
-                    <a href="/m-user/edit-product" class="m-link" >Edit Product</a>
-                    <a href="/m-user/new-requests" class="m-link" >New Requests</a>
-                    <a href="/m-user/accepted-requests" class="m-link" >Accepted Requests</a>
-                    <a href="/m-user/confirmed-requests" class="m-link" >Confirmed Requests</a>
-                    <a href="/m-user/orders" class="m-link" >My Orders</a>
+                    <a href="/m-user/product-status" class="m-link" >Product Status</a>
+                    <a href="/m-user/new-orders" class="m-link" >New Orders</a>
+                    <a href="/m-user/history" class="m-link" >Order History</a>
                 </div>
                 <div class="col-2">
                     <h6 class="m-head">CORPORATE INFO</h6>
                     <a href="/about" class="m-link" >About theHanger</a>
-                    <a href="/corporate-governance" class="m-link" >Corporate Governance</a>
                     <a href="/idea" class="m-link" >Idea Behind</a>
                 </div>
                 <div class="col-2">
@@ -34,9 +31,12 @@
                 </div>
                 <div class="col-2">
                     <h6 class="m-head">LOGIN / SIGN-UP</h6>
-                    <a href="/auth/merchant-login" class="m-link" >Login</a>
-                    <a href="/auth/merchant-signUp" class="m-link" >Sign Up</a>
-                    <a href="/auth/logout" class="m-link" >Logout</a>
+                    <% if (isAuth) { %>
+                        <a href="/auth/logout" class="m-link" >Logout</a>
+                    <% } else { %>
+                        <a href="/auth/merchant-login" class="m-link" >Login</a>
+                        <a href="/auth/merchant-signUp" class="m-link" >Sign Up</a>
+                    <% } %>
                 </div>
                 <div class="col-2">
 
@@ -76,5 +76,6 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="/js/script.js"></script>
 </body>
 </html>

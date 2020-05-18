@@ -1,32 +1,48 @@
-const path = require('path');
-
+//init. express and its Router
 const express = require('express');
-
-const shopController = require('../controllers/shop');
-const isAuth = require('../middleware/is-auth');
-
 const router = express.Router();
 
+//getting shop Controller
+const shopController = require('../controllers/shop');
+//getting isAuth middleware
+const isAuth = require('../middleware/is-auth');
+
+//All Routes
+
+// getting home page for user
 router.get('/',shopController.getHome);
 
+// getting shop page for user,it will include all products
 router.get("/shop",shopController.getShop);
 
+// getting a single product for user
 router.get("/shop/product/:productId",shopController.getProduct);
 
+// adding product to user bag
 router.post("/shop/add-to-bag/:prodId",isAuth,shopController.postAddToBag) ;
 
+// adding product to user wishlist
 router.get("/shop/add-to-wishlist/:prodId",isAuth,shopController.postAddToWishlist) ;
 
+// getting user wishlist
 router.get("/user/wishlist",isAuth,shopController.getWishlist) ;
 
+// getting user bag
 router.get("/user/bag",isAuth,shopController.getBag) ;
 
+// remove an item from user bag
 router.get("/user/bag/remove/:bagId",isAuth,shopController.getRemoveFromBag) ;
 
+// removing an item from user bag and adding it to wishlist
 router.get("/user/bag/remove-and-add/:bagId",isAuth,shopController.getRemoveAndAdd) ;
 
+// removing item form user wishlist
 router.get("/shop/remWishlist/:prodId",isAuth,shopController.getRemoveFromWishlist) ;
 
+
+
+
+////PENDING ROUTES :)
 // men-section - anurag
 // router.get("/shop/men",shopController.getProductsShopMen);
 

@@ -172,6 +172,8 @@ $(document).ready(function(){
 
 //end of jQuery
 });
+   
+
 
     var currentTab = 0 ;
     showTab(currentTab);
@@ -205,13 +207,13 @@ $(document).ready(function(){
     }
     var nextPrev = function(n) {
         var x = document.getElementsByClassName("m-tab");
-        x[currentTab].style.display = "none";
-        document.getElementsByClassName("m-step")[currentTab].className += " finish";
-        currentTab = currentTab + n;
-        if (currentTab >= x.length) {
+        if (currentTab+n >= x.length) {
             document.getElementById("adp").submit();
             return false;
         }
+        x[currentTab].style.display = "none";
+        document.getElementsByClassName("m-step")[currentTab].className += " finish";
+        currentTab = currentTab + n;
         showTab(currentTab);
     }
     function validateForm() {

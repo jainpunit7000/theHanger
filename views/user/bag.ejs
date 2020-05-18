@@ -15,7 +15,7 @@
                             <div class="row">
                                 <% for ( product of products ) { %>
                                     <div class="col-3">
-                                        <img class="m-img" src="<%= product.productId.imageUrl %>"
+                                        <img class="m-img" src="<%= product.productId.image[0].url %>"
                                         width="100%" height="190px" alt="img">
                                     </div>
                                     <div class="col-6 m-style">
@@ -25,9 +25,13 @@
                                         <button class="btn"> Qty : <%= product.quantity %></button>
                                     </div>
                                     <div class="col-3 text-right m-style">
-                                        <h5>Rs. <%= product.productId.price %></h5>
-                                        <span class="m-dll">Rs.995</span>
-                                        <span class="m-off"> 37% OFF </span>
+                                        <% if ( product.productId.discount > 0 ) { %>
+                                            <h5>Rs. <%= (product.productId.currentPrice)*(100-product.productId.discount)/100 %></h5>
+                                            <span class="m-dll">Rs. <%= product.productId.currentPrice %></span>
+                                            <span class="m-off"> <%= product.productId.discount %>% OFF </span>
+                                        <% } else { %>
+                                            <h5>Rs. <%= product.productId.currentPrice %></h5>
+                                        <% } %>
                                     </div>
                                     <div class="col-4 m-margin">
                                         <a href="/user/bag/remove/<%= product._id %>" class="btn m-btn-v">REMOVE</a>
@@ -47,12 +51,12 @@
                         <div class="col-4 m-order-details">
                             <hr>
                             <h6 class="mb-4">PRICE DETAILS</h6>
-                            <p>Bag Total <span>Rs. <%= totalAmount %>  </span> </p>
-                            <p>Bag Discount <span class="text-success">-Rs.265</span></p>
-                            <p>Order Total <span>Rs.995</span></p>
+                            <p>Bag Total <span>Rs. <%= bagTotal %>  </span> </p>
+                            <p>Bag Discount <span class="text-success">-Rs. <%= bagDiscount %></span></p>
+                            <p>Order Total <span>Rs. <%= orderTotal %></span></p>
                             <p>Delivery Charges <span class="text-success">FREE</span><del>Rs.99</del></p>
                             <hr class="mt-4">
-                            <h5>Total <span>Rs. <%= totalAmount %></span></h5>
+                            <h5>Total <span>Rs. <%= orderTotal %></span></h5>
                             <button class="btn m-btn">PLACE ORDER</button>
                         </div>
                     </div>

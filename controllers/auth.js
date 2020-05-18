@@ -1,7 +1,9 @@
-//PJ
 const Seller = require("../models/seller");
 const Buyer = require("../models/buyer") ;
+const Corporate = require("../models/corporate") ;
 const bcrypt = require("bcryptjs") ;
+
+
 exports.getLogin = (req,res,next) => {
     res.render("user/auth/login",{
         pageTitle : 'Login Please',
@@ -18,12 +20,10 @@ exports.postLogin = (req,res,next) => {
             }
             return bcrypt.compare(password,buyer.password)
                 .then( match => {
-                    // console.log("-->here3") ;
                     if( match ){
-                        // console.log("-->here4") ;
                         req.session.isLoggedIn = true ;
                         req.session.buyer = buyer ;
-                        console.log("----> Buyer is logged in") ;
+                        console.log("----> Buyer logged in") ;
                         return req.session.save(err => {
                             console.log("-->" + err) ;
                             res.redirect("/shop") ;
@@ -60,7 +60,7 @@ exports.postSignUp = (req,res,next) => {
                     password : hashedPassword
                 })
                 return byr.save().then( result => {
-                    console.log("----> new user created") ;
+                    console.log("----> new Buyer created") ;
                     res.redirect("/auth/login") ;
                 })
                 .catch( err => {
@@ -83,22 +83,17 @@ exports.postMerchantLogin = (req,res,next) => {
     const password = req.body.password ;
     Seller.findOne({email:email})
         .then( merchant => {
-            // console.log("-->here1") ;
             if(!merchant){
                 return res.redirect("/auth/merchant-login") ;
             }
-            // console.log("-->here2") ;
             bcrypt.compare(password,merchant.password)
                 .then( match => {
-                    // console.log("-->here3") ;
                     if( match ){
-                        // console.log("-->here4") ;
                         req.session.isLoggedIn = true ;
                         req.session.merchant = merchant ;
-                        console.log("----> logged in") ;
+                        console.log("----> Merchant logged in") ;
                         return req.session.save(err => {
                             console.log("-->" + err) ;
-                            res.redirect("/merchant-console") ;
                         })
                     }
                     return res.redirect("/auth/merchant-login") ;
@@ -119,7 +114,6 @@ exports.getMerchantSignUp = (req,res,next) => {
 exports.postMerchantSignUp = (req,res,next) => {
     const email = req.body.email ;
     const password = req.body.password ;
-    // console.log("----> in here") ;
     Seller.findOne({email:email})
         .then( merchant => {
             if( merchant ){
@@ -135,7 +129,7 @@ exports.postMerchantSignUp = (req,res,next) => {
             return merchant.save()
         } )
         .then( result => {
-            console.log("----> new Merchant acnt. Created") ;
+            console.log("----> new Merchant account Created") ;
             res.redirect("/auth/merchant-login") ;
         } )
         .catch( err => {
@@ -144,15 +138,78 @@ exports.postMerchantSignUp = (req,res,next) => {
 }
 
 exports.postLogout = (req, res, next) => {
-    let isMerchant = true ;
-    if( !req.session.merchant )
-        isMerchant = false ;
     req.session.destroy(err => {
-    console.log(err);
-    if( isMerchant )
-        res.redirect('/sell');
-    else
-        res.redirect("/shop") ;
+        console.log(err);
+        console.log("----> logged out os the session") ;
+        res.redirect("/") ;
     });
 };
   
+exports.getCorporateSignUp = (req,res,next) => {
+    res.render("corporate/auth/sign-up",{
+        pageTitle : "corporate governance sign up"
+    })
+}
+exports.getCorporateLogin = (req,res,next) => {
+    res.render("corporate/auth/login",{
+        pageTitle : "corporate governance login"
+    })
+}
+exports.postCorporateSignUp = (req,res,next) => {
+    console.log("----> in post sign up") ;
+    const email = req.body.email ;
+    const password = req.body.password ;
+    const token = req.body.token ;
+    Corporate.findOne({email})
+        .then( corporate => {
+            if( corporate || token != "1A234" ){
+                return res.redirect("/auth/corporate-signUp") ;
+            }
+            return bcrypt.hash(password,12) ;
+        } )
+        .then( hashedPassword => {
+            console.log("----> here") ;
+            const corporate = new Corporate({
+                email : email ,
+                password : hashedPassword,
+                product : {
+                    acquired : [],
+                    passed : []
+                }
+            })
+            return corporate.save()
+        } )
+        .then( result => {
+            console.log("----> new corporate account Created") ;
+            res.redirect("/auth/corporate-login") ;
+        } )
+        .catch( err => {
+            console.log(err) ;
+        })
+}
+exports.postCorporateLogin = (req,res,next) => {
+    const email = req.body.email ;
+    const password = req.body.password ;
+    Corporate.findOne({email:email})
+        .then( corporate => {
+            if(!corporate){
+                return res.redirect("/auth/corporate-login") ;
+            }
+            bcrypt.compare(password,corporate.password)
+                .then( match => {
+                    if( match ){
+                        req.session.isLoggedIn = true ;
+                        req.session.corporate = corporate ;
+                        console.log("----> corporate logged in") ;
+                        return req.session.save(err => {
+                            console.log("-->" + err) ;
+                            res.redirect("/corporate/corporate-console") ;
+                        })
+                    }
+                    return res.redirect("/auth/corporate-login") ;
+                } )
+            } ) 
+        .catch( err => {
+            console.log(err) ;
+        })
+}

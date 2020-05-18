@@ -13,7 +13,7 @@
                 <% for ( let product of products ) { %>
                     <div class="col-3 text-center mb-4">
                         <div class="m-margin">
-                            <img src="<%= product.productId.imageUrl %>"
+                            <img src="<%= product.productId.image[0].url %>"
                             width="98%" height="310px" alt="img">
                             <a href="/shop/remWishlist/<%= product.productId._id %>" class="m-cross" >X</a>
                             <p><%= product.productId.desc  %></p>

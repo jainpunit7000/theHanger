@@ -1,0 +1,38 @@
+<%- include("./includes/head.ejs") %>
+<link rel="stylesheet" href="/css/bag.css">
+<%- include("./includes/nav.ejs") %>
+
+    <!-- main div  -->
+    <div style="margin-top:92px;min-height: 350px;" >
+        <div class="container">
+            <div class="display-4">Finalize A Product</div>
+            <hr>
+            <div class="row pt-5">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <% for (product of products) { %>
+                        <div class="row m-in-finish">
+                            <div class="col-3 mt-2">
+                                <img class="m-img" src="<%= product.imageUrl %>"
+                                width="100%" height="260px" alt="img">
+                            </div>
+                            <div class="col-9 m-style">
+                                <div class="ml-4 pt-4 pl-5 pb-2">
+                                    <h5><%= product.brand %></h5>
+                                    <p><%= product.desc %></p>
+                                    <p>Sold By : xyz Limited</p>
+                                    <p>Price : <%= product.price %></p>
+                                </div>
+                                <hr>
+                                <a href="/corporate/finalize/<%= product._id %>" class="btn m-btn-v">Finalize Product</a>
+                            </div>
+                            <div class="col-12">
+                                <hr>
+                            </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+<%- include("./includes/end.ejs") %>

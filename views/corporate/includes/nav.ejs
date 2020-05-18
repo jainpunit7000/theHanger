@@ -6,7 +6,7 @@
         <!-- navbar -->
         <nav class="navbar navbar-expand-md fixed-top m-navbar">
 
-            <a href="#" class="navbar-brand m-brand" ><img src="/images/newLogo.jpg" width="50px" height="35px"></a>
+            <a href="/corporate/corporate-console" class="navbar-brand m-brand" ><img src="/images/newLogo.jpg" width="50px" height="35px"></a>
             <button type="button" class="navbar-toggler bg-danger" data-toggle="collapse" data-target="#nv" >
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -17,23 +17,26 @@
                         <div class="dropdown-content container-fluid" >
                             <div class="row justify-content-between">
                                 <div class="d-aul col-6">
-                                    <a href="/add-product">Add Product</a>
+                                    <a href="/corporate/new-requests">New Product Requests</a>
                                 </div>
                                 <div class="d-aul col-6">
-                                    <a href="/product-status">Product's Status</a>
+                                    <a href="/corporate/accepted-requests">Accepted Requests</a>
                                 </div>
                             </div>
                         </div>
                     </li>
                     <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-btn px-4">Order Utilities</a>
+                        <a href="#" class="nav-link dropdown-btn px-4">Final Product Utilities</a>
                         <div class="dropdown-content container-fluid" >
                             <div class="row justify-content-between">
                                 <div class="d-aul col-6">
-                                    <a href="/new-orders">New Orders</a>
+                                    <a href="/corporate/finalize-product">Finalize Product</a>
                                 </div>
                                 <div class="d-aul col-6">
-                                    <a href="/history">Order's History</a>
+                                    <a href="/corporate/edit-products">Edit Previous Products</a>
+                                </div>
+                                <div class="d-aul col-6">
+                                    <a href="/corporate/history">History</a>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +63,9 @@
                                         <p>Hi, <span style="font-weight: 500;"><%= userName %></span></p>
                                         <a href="/auth/logout">Logout</a>
                                     <% } else { %>
-                                        <a href="/auth/merchant-login">Login</a>
+                                        <a href="/auth/corporate-login">Login</a>
                                         <span>/</span>
-                                        <a href="/auth/merchant-signUp">Sign Up</a> <br>
+                                        <a href="/auth/corporate-signUp">Sign Up</a> <br>
                                     <% } %>
                                     
                                     <!-- <ul class="dc-ul" >

@@ -67,3 +67,11 @@
     transform: translateY(-2px);
     transition: all 0.6s;
 }
+.m-in-finish{
+    padding:14px;
+    margin : 10px auto ;
+}
+.m-in-finish:hover{
+    box-shadow: 1px 2px 15px rgb(196, 196, 196);
+    border-radius: 5px;
+}

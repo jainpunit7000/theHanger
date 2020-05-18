@@ -3,8 +3,8 @@ const mongoose = require("mongoose") ;
 
 const Schema = mongoose.Schema;
 
-const productSchema = new Schema({
-    userId : {
+const finalProductSchema = new Schema({
+    sellerId : {
         type: Schema.Types.ObjectId,
         ref : "Seller" ,
         required : true 
@@ -17,10 +17,20 @@ const productSchema = new Schema({
         type: Number,
         required : true
     },
-    imageUrl : {
-        type : String,
+    currentPrice : {
+        type : Number ,
         required : true 
     },
+    discount : {
+        type : Number,
+        default : 0
+    },
+    image:[{
+        url : {
+            type : String,
+            required : true
+        }
+    }],
     brand : {
         type : String,
         required : true
@@ -28,6 +38,10 @@ const productSchema = new Schema({
     desc : { 
         type : String,
         required : true
+    },
+    status : {
+        type : String ,
+        default : "Completed"
     },
     cat1 : {
         type : String,
@@ -41,14 +55,24 @@ const productSchema = new Schema({
         type : String,
         required : true
     },
+    size:[{
+            particularSize : {
+                type : String ,
+                required : true,
+            },
+            quantity : {
+                type : Number ,
+                default : 0
+            }
+    }],
+    totalQuantity : {
+        type : Number ,
+        required : true
+    },
     passedBy:{
         type : Schema.Types.ObjectId,
         ref : "Corporate"
-    },
-    status : {
-        type :  String,
-        default : "Pending" 
     }
 });
 
-module.exports = mongoose.model("Product",productSchema) ;
+module.exports = mongoose.model("FinalProduct",finalProductSchema) ;
