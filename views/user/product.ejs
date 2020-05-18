@@ -29,12 +29,12 @@
                 </div>
             </div>
             <div class="col-5 p-2">
-                <p class="m-brand"><%= product.brand %></p>
-                <p class="text-muted  text-lg m-desc"><%= product.desc %></p>
+                <p class="m-brand" style="margin: 0px !important;"><%= product.brand %></p>
+                <p class="text-muted  text-lg m-desc"><%= product.title %></p>
                 <hr>
                 <div class="ml-2">
                     <% if (product.discount > 0) { %>
-                        <span class="m-price">Rs. <%= (product.currentPrice)*(100 - product.discount)/(100) %></span>
+                        <span class="m-price">Rs. <%= parseInt((product.currentPrice)*(100 - product.discount)/(100)) %></span>
                         <span class="m-del mx-3 text-muted"><del >Rs. <%= product.currentPrice %></del></span>
                         <span class="text-warning m-disc">( <%= product.discount %>% OFF )</span>
                     <% } else { %>
@@ -45,7 +45,7 @@
                     <h4 class="my-4" >SELECT SIZE</h4>
                     <%  for (let index=0;index < product.size.length ; index++ ) { %>
                         <%  if ( product.size[index].quantity > 0 ) { %>
-                            <button class="m-radio-btn" value="<%= product.size[index].particularSize %>"  id="b<%= index+1 %>"><%= product.size[index].particularSize %></button>
+                            <button class="m-radio-btn" value="<%= product.size[index].particularSize %>"  id="b<%= index+1 %>"><%= product.size[index].particularSize %> </button>
                         <% } else { %>
                             <button class="m-radio-btn text-muted" style="opacity:0.5" disabled id="b<%= index+1 %>"><%= product.size[index].particularSize %></button>
                         <% } %>

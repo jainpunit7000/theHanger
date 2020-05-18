@@ -62,7 +62,6 @@ app.use((req, res, next) => {
     }
     Seller.findById(req.session.merchant._id)
       .then(merchant => {
-        console.log("--->"+merchant) ;
         req.merchant = merchant;
         next();
       })

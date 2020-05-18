@@ -113,7 +113,7 @@
                                     <p class="m-dess" ><%= product.title %></p>
                                     <div>
                                         <% if ( product.discount > 0 ) { %>
-                                            <span class="m-pri mr-2">Rs. <%= (product.currentPrice)*(100 - product.discount)/(100) %> </span>
+                                            <span class="m-pri mr-2">Rs. <%= parseInt((product.currentPrice)*(100 - product.discount)/(100)) %> </span>
                                             <del class="m-dell mr-2">Rs. <%= product.currentPrice %></del>
                                             <span class="m-dis">( <%= product.discount %>% OFF )</span>
                                         <% } else { %>

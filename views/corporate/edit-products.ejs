@@ -10,7 +10,7 @@
             <div class="row pt-5">
                 <div class="col-2"></div>
                 <div class="col-8">
-                    <% for (product of products) { %>
+                    <% for ( product of products) { %>
                         <div class="row">
                             <div class="col-3">
                                 <img class="m-img" src="<%= product.productId.image[0].url %>"
@@ -18,8 +18,8 @@
                             </div>
                             <div class="col-9 m-style">
                                 <div class="ml-4 pt-4 pl-5">
-                                    <h5><%= product.productId.brand %></h5>
-                                    <p><%= product.productId.desc %></p>
+                                    <p><%= product.productId.brand %></p>
+                                    <p><%= product.productId.title %></p>
                                 </div>
                             </div>
                             <div class="col-12">

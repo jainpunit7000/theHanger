@@ -24,6 +24,7 @@ exports.postLogin = (req,res,next) => {
                         req.session.isLoggedIn = true ;
                         req.session.buyer = buyer ;
                         console.log("----> Buyer logged in") ;
+                        // res.redirect()
                         return req.session.save(err => {
                             console.log("-->" + err) ;
                             res.redirect("/shop") ;
@@ -94,6 +95,7 @@ exports.postMerchantLogin = (req,res,next) => {
                         console.log("----> Merchant logged in") ;
                         return req.session.save(err => {
                             console.log("-->" + err) ;
+                            res.redirect("/merchant-console") ;
                         })
                     }
                     return res.redirect("/auth/merchant-login") ;
@@ -140,7 +142,7 @@ exports.postMerchantSignUp = (req,res,next) => {
 exports.postLogout = (req, res, next) => {
     req.session.destroy(err => {
         console.log(err);
-        console.log("----> logged out os the session") ;
+        console.log("----> logged out of the session") ;
         res.redirect("/") ;
     });
 };

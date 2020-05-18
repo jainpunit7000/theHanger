@@ -28,11 +28,7 @@ const corporateSchema = new Schema({
         ],
         passed : [
             {
-                productId : {
-                    type : Schema.Types.ObjectId,
-                    required : true,
-                    ref:'FinalProduct'
-                },
+                productId : {type : Schema.Types.ObjectId, required : true,ref:'FinalProduct'},
                 dateUpdated : {
                     type : Date,
                     default : Date.now

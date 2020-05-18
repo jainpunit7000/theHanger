@@ -26,7 +26,7 @@
                                     </div>
                                     <div class="col-3 text-right m-style">
                                         <% if ( product.productId.discount > 0 ) { %>
-                                            <h5>Rs. <%= (product.productId.currentPrice)*(100-product.productId.discount)/100 %></h5>
+                                            <h5>Rs. <%= parseInt((product.productId.currentPrice)*(100-product.productId.discount)/100) %></h5>
                                             <span class="m-dll">Rs. <%= product.productId.currentPrice %></span>
                                             <span class="m-off"> <%= product.productId.discount %>% OFF </span>
                                         <% } else { %>

@@ -71,24 +71,17 @@ exports.postSingleFinalize = (req, res, next) => {
     }
     const price = req.body.price ;
     const sellerId = req.body.sellerId ;
-    let size = [],imageArray = [] ;
+    let size = [] ;
     cat1 = cat1.toString().toLowerCase() ;
     cat2 = cat2.toString().toLowerCase() ;
     cat3 = cat3.toString().toLowerCase() ;
-    image.forEach( img => {
-        if( img && img != "" ){
-            imageArray.push({
-                url : img
-            }) ;
-        }
-    } )
     if( cat3 == "saree" ){
         size.push({
             particularSize : "1 Size",
             quantity : oneSize
         })
     }
-    else if( cat2 != "footwear"){
+    else if( cat2 != "footwear" && cat2 != "girlsfootwear" && cat2 != "boysfootwear" ){
         size.push({
             particularSize : "S",
             quantity : small
@@ -154,7 +147,7 @@ exports.postSingleFinalize = (req, res, next) => {
         title : title,
         price : price,
         currentPrice : currentPrice,
-        image : imageArray,
+        image : image,
         brand : brand,
         desc : desc ,
         cat1 : cat1 ,
@@ -186,11 +179,15 @@ exports.getHistory = (req,res,next) => {
 
 }
 exports.getEditProducts = (req,res,next) => {
-    req.corporate.populate("products.passed.productId").execPopulate()
-        .then( corp => {
+    req.corporate
+    .populate('products.passed.productId')
+    .execPopulate()
+        .then( corporate => {
+            const products = corporate.products.passed ;
+            // console.log(corp.products.passed) ;
             res.render('corporate/edit-products', {
                 pageTitle: 'Products for Editing',
-                products : corp.products.passed,
+                products : products,
                 userName : req.session.corporate ? req.session.corporate.email : ""
               });
         } )
@@ -200,6 +197,7 @@ exports.getEditProduct = (req,res,next) => {
     const prodId = req.params.prodId ;
     FinalProduct.findOne({_id : prodId})
         .then( product => {
+            console.log(product) ;
             res.render('corporate/edit-product', {
                 pageTitle: 'Editing a Product',
                 product : product,

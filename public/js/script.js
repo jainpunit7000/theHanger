@@ -37,16 +37,16 @@ $(document).ready(function(){
           rem() ;
           $("#b1").addClass("Highlight") ;
       };
+      $("#add_to_bag").click(function(){
+          let size = document.getElementsByClassName("Highlight")[0].value;
+          // console.log("submit attempt " + size) ;
+          document.getElementById("product_size").value = size ;
+          $("#bag_form").submit() ;
+      })
       document.getElementById("b2").onclick = function() {
           rem() ;
           $("#b2").addClass("Highlight") ;
       };
-        $("#add_to_bag").click(function(){
-            let size = document.getElementsByClassName("Highlight")[0].value;
-            // console.log("submit attempt " + size) ;
-            document.getElementById("product_size").value = size ;
-            $("#bag_form").submit() ;
-        })
       document.getElementById("b3").onclick = function() {
           rem() ;
           $("#b3").addClass("Highlight") ;
