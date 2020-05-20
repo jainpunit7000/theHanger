@@ -21,7 +21,6 @@ const store = new mongoDbStore({
     collection : "session"
 }) ;
 
-
 const app = express() ;
 
 //configuring body-parser and setting static path to "/public"
