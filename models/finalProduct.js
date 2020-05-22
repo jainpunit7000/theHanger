@@ -1,4 +1,3 @@
-//pj
 const mongoose = require("mongoose") ;
 
 const Schema = mongoose.Schema;
@@ -74,5 +73,7 @@ const finalProductSchema = new Schema({
         ref : "Corporate"
     }
 });
+
+finalProductSchema.index({cat1:'text',cat2:'text',cat3:'text',brand:'text',title:'text'},{name:'My text Index' , weights : {brand : 10,cat3 : 4,cat2:2,cat1:1}});
 
 module.exports = mongoose.model("FinalProduct",finalProductSchema) ;
