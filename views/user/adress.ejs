@@ -1,0 +1,39 @@
+<%- include("./includes/head.ejs") %>
+<link rel="stylesheet" href="/css/bag.css">
+<%- include("./includes/nav.ejs") %>
+
+    <!-- main div  -->
+    <div style="margin-top:92px;min-height: 350px;" >
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-2"></div>
+                <div class="col-8 mt-5">
+                    <div class="row">
+                        <div class="col-12 m-order-details">
+                            <hr>
+                            <h6 class="mb-4">PRICE DETAILS</h6>
+                            <p>Bag Total <span>Rs. <%= bagTotal %>  </span> </p>
+                            <p>Bag Discount <span class="text-success">-Rs. <%= bagDiscount %></span></p>
+                            <p>Order Total <span>Rs. <%= orderTotal %></span></p>
+                            <p>Delivery Charges <span class="text-success">FREE</span><del>Rs.99</del></p>
+                            <hr class="mt-4">
+                            <h5>Total <span>Rs. <%= orderTotal %></span></h5>
+                            <br>
+                            <br>
+                            <form id="bag_form" action="/shop/orders" method="POST" >
+                                <label for="adress">Enter delievery Adress : </label>
+                                <input type="text" name="adress" value="">
+                            </form>
+                            <br>
+                            <br>
+                            <input type="text" id="product_size" hidden name="size" value="">
+                            <a href="/user/orders"><button class="btn m-btn">PLACE ORDER</button></a>
+                        </div>
+                    </div>
+                    <br>
+                    <hr>
+                </div>
+                <div class="col-2"></div>
+            </div>
+        </div>
+<%- include("./includes/end.ejs") %>

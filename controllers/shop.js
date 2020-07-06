@@ -2,6 +2,7 @@ const Product = require('../models/product');
 const FinalProduct = require('../models/finalProduct');
 const Buyer = require("../models/buyer") ;
 const corporate = require("../models/corporate");
+const order = require('../models/order');
 
 exports.getHome = (req,res,next) => {
     res.render ( 'user/home' , {
@@ -284,7 +285,61 @@ exports.getRemoveFromWishlist = (req,res,next) => {
     .catch(err => console.log(err));
 };
 
+exports.getAdress = (req,res,next) => {
+    req.buyer
+    .populate('bag.items.productId')
+    .execPopulate()
+    .then(buyer => {
+        const products = buyer.bag.items;
+        let bagTotal=0,bagDiscount=0;
+        for(let i=0;i<products.length;++i){
+            bagDiscount += (products[i].productId.currentPrice)*(products[i].quantity)*(products[i].productId.discount)/100 ;
+            bagTotal += (products[i].productId.currentPrice)*(products[i].quantity);
+        }
+        res.render('user/adress', {
+            pageTitle : 'Adress',
+            products : products.reverse(),
+            bagDiscount : bagDiscount,
+            bagTotal : bagTotal,
+            orderTotal : bagTotal - bagDiscount ,
+            userName : req.buyer ? req.buyer.email : ""
+        });
+    })
+    .catch(err => console.log(err));
+};
 
+exports.postOrder = (req,res,next) => {
+    req.buyer
+    .populate('bag.items.productId')
+    .execPopulate()
+    .then(buyer => {
+        const products = buyer.bag.items.map(i => {
+            return {quantity : i.quantity,product : i.productId}
+        });
+        const order = new order({
+            buyer : {
+                name : req.buyer.name,
+                buyerId : req.buyer,
+                adress :  req.adress
+            },
+            products
+        });
+        // let bagTotal=0,bagDiscount=0;
+        // for(let i=0;i<products.length;++i){
+        //     bagDiscount += (products[i].productId.currentPrice)*(products[i].quantity)*(products[i].productId.discount)/100 ;
+        //     bagTotal += (products[i].productId.currentPrice)*(products[i].quantity);
+        // }
+        // res.render('user/orders', {
+        //     pageTitle : 'Orders',
+        //     products : products.reverse(),
+        //     bagDiscount : bagDiscount,
+        //     bagTotal : bagTotal,
+        //     orderTotal : bagTotal - bagDiscount ,
+        //     userName : req.buyer ? req.buyer.email : ""
+        // });
+    })
+    .catch(err => console.log(err));
+};
 
 
 

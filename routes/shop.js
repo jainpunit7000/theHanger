@@ -25,6 +25,8 @@ router.get("/user/wishlist",isAuth,shopController.getWishlist) ;
 
 // getting user bag
 router.get("/user/bag",isAuth,shopController.getBag) ;
+router.get("/user/adress",isAuth,shopController.getAdress) ;
+router.post("/user/orders",isAuth,shopController.getAdress) ;
 
 // remove an item from user bag
 router.get("/user/bag/remove/:bagId",isAuth,shopController.getRemoveFromBag) ;
